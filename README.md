@@ -30,23 +30,15 @@ The Histogram of gray scale image and color image is shown.
 import cv2
 import numpy as np
 import matplotlib.pyplot as plt
-
-# Read image safely
 grayscale_image = cv2.imread("map.png", cv2.IMREAD_GRAYSCALE)
 color_img = cv2.imread("flower.jpg")
-
-# Check if images are loaded
 if grayscale_image is None or color_img is None:
     print("Error: Image could not be loaded.")
     exit()
-
-# Calculate histograms
 gray_hist = cv2.calcHist([grayscale_image], [0], None, [256], [0, 256])
 hist_b = cv2.calcHist([color_img], [0], None, [256], [0, 256])
 hist_g = cv2.calcHist([color_img], [1], None, [256], [0, 256])
 hist_r = cv2.calcHist([color_img], [2], None, [256], [0, 256])
-
-# Plot images
 plt.figure(figsize=(12, 5))
 plt.subplot(1, 2, 1)
 plt.imshow(grayscale_image, cmap='gray')
@@ -57,15 +49,12 @@ plt.imshow(cv2.cvtColor(color_img, cv2.COLOR_BGR2RGB))
 plt.title('Color Image')
 plt.axis('off')
 plt.show()
-
-# Plot histograms
 plt.figure(figsize=(12, 5))
 plt.subplot(1, 2, 1)
 plt.plot(gray_hist, color='black')
 plt.title("Grayscale Histogram")
 plt.xlabel("Pixel Intensity")
 plt.ylabel("Count")
-
 plt.subplot(1, 2, 2)
 plt.plot(hist_r, color='red')
 plt.plot(hist_g, color='green')
@@ -74,15 +63,12 @@ plt.title("Color Histogram")
 plt.xlabel("Pixel Intensity")
 plt.ylabel("Count")
 plt.show()
-
-
-
-
-
-
-
-
-
+plt.subplot(2, 2, 4)
+plt.plot(hist_equalized, color='black')
+plt.title('Equalized Histogram')
+plt.xlim([0, 256])
+plt.tight_layout()
+plt.show()
 
 ```
 ## Output:
@@ -96,6 +82,7 @@ plt.show()
 
 
 ### Histogram Equalization of Grayscale Image.
+<img width="346" height="260" alt="image" src="https://github.com/user-attachments/assets/a6cefbf0-cb93-4098-a2a9-3de62e2f5208" />
 
 
 

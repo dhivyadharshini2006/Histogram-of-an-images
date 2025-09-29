@@ -22,7 +22,7 @@ The Histogram of gray scale image and color image is shown.
 
 
 ## Program:
-```
+```python
 # Developed By:Dhivya Dharshini B
 # Register Number:212223240031 
 
